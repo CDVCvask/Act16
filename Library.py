@@ -2,12 +2,16 @@ from xmlrpc.client import DateTime
 
 
 def Menu():
+    print(" ")
     print("Bienvenido a la biblioteca")
     print("1.Registrar libro ")
     print("2.Registrar usuario")
-    print("3.Prestamo de libro")
-    print("4.Devolucion de libro")
-    print("5.Salir")
+    print("3.Mostrar libros")
+    print("4.Mostrar usuarios")
+    print("5.Prestamo de libro")
+    print("6.Devolucion de libro")
+    print("7.Mostrar prestamos")
+    print("8.Salir")
 class Book:
     def __init__(self, title, author, year,code,aviable):
         self.title = title
@@ -20,12 +24,14 @@ class Mod_Book:
         self.books = []
     def Show(self):
         pass
+
 class User:
     def __init__(self, username, code,carrer):
         self.username = username
         self.password = code
         self.carrer = carrer
 allow = False
+exit = 0
 while allow == False:
     Menu()
     opt = int(input("Ingrese la opción que desee: "))
@@ -57,5 +63,23 @@ while allow == False:
             pass
         case 5:
             pass
-        case _:
+        case 6:
             pass
+        case 7:
+            pass
+        case 8:
+            while 1 != 0:
+                check = input("Está seguro de que desea salir de la aplicación?(S/N) ")
+                if check.upper() == "S":
+                    print("Gracias por utilizar el programa")
+                    exit = 1
+                    break
+                elif check.upper() == "N":
+                    print("Regresando el Menu")
+                    break
+                else:
+                    print("La opción seleccionada no es valida")
+        case _:
+            print("La opción seleccionada no es valida")
+    if exit == 1:
+        break
