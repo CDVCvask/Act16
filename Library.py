@@ -23,8 +23,16 @@ class Mod_Book:
     def __init__(self):
         self.books = []
     def Show(self):
-        pass
-
+        cont = 1
+        if len(self.books) < 1:
+            print("No hay libros para mostrar")
+        else:
+            for Book in self.books:
+                print(f"Libro {cont}")
+                print(f"Titulo {Book.title},Autor: {Book.author},Año de publicacion: {Book.year},Código: {Book.code},Disponible: {Book.aviable}")
+                cont += 1
+    def AddBook(self, book):
+        self.books.append(book)
 class User:
     def __init__(self, username, code,carrer):
         self.username = username
@@ -32,12 +40,13 @@ class User:
         self.carrer = carrer
 allow = False
 exit = 0
+Mod_Book = Mod_Book()
 while allow == False:
     Menu()
     opt = int(input("Ingrese la opción que desee: "))
     match opt:
         case 1:
-            acutal = DateTime.now().year
+            #acutal = DateTime.now().year
             count = 0
             print("Ingreso de libros")
             print(" ")
@@ -49,14 +58,15 @@ while allow == False:
                     title = input("Ingrese el titulo del libro: ")
                     author = input("Ingrese el autor del libro: ")
                     year = int(input("Ingrese el año de publicación del libro:"))
-                    if year <= 0 or year > acutal:
+                    if year <= 0 :
                         print("La cantidad ingresada no es valida")
                     else:
                         code = f"B{count}"
                         aviable = True
-                        bood = Book(title,author,year,code,aviable)
+                        book = Book(title,author,year,code,aviable)
+                        Mod_Book.AddBook(book)
         case 2:
-            pass
+            Mod_Book.Show()
         case 3:
             pass
         case 4:
