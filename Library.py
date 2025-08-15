@@ -5,8 +5,8 @@ def Menu():
     print(" ")
     print("Bienvenido a la biblioteca")
     print("1.Registrar libro ")
-    print("2.Registrar usuario")
-    print("3.Mostrar libros")
+    print("2.Mostrar libros")
+    print("3.Registrar usuario")
     print("4.Mostrar usuarios")
     print("5.Prestamo de libro")
     print("6.Devolucion de libro")
@@ -28,6 +28,7 @@ class Mod_Book:
             print("No hay libros para mostrar")
         else:
             for Book in self.books:
+                print(" ")
                 print(f"Libro {cont}")
                 print(f"Titulo {Book.title},Autor: {Book.author},Año de publicacion: {Book.year},Código: {Book.code},Disponible: {Book.aviable}")
                 cont += 1
@@ -41,9 +42,21 @@ class User:
 class Mod_User:
     def __init__(self):
         self.users = []
+    def ShowU(self):
+        cont = 1
+        if len(self.users) < 1:
+            print("No hay usuarios para mostrar")
+        else:
+            for User in self.users:
+                print(" ")
+                print(f"Usuario {User.username} Carrera: {User.carrer} Código: {User.code}")
+                print(f"")
+    def AddUser(self, user):
+        self.users.append(user)
 allow = False
 exit = 0
 Mod_Book = Mod_Book()
+Mod_User = Mod_User()
 while allow == False:
     Menu()
     opt = int(input("Ingrese la opción que desee: "))
@@ -89,8 +102,9 @@ while allow == False:
                     carrer = input("Ingrese la carrera del usuario: ")
                     ucode= f"U{countU}"
                     user = User(u_name,ucode,carrer)
+                    Mod_User.AddUser(user)
         case 4:
-            pass
+            Mod_User.ShowU()
         case 5:
             pass
         case 6:
