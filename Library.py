@@ -37,7 +37,7 @@ class Mod_Book:
 class User:
     def __init__(self, username, code,carrer):
         self.username = username
-        self.password = code
+        self.code = code
         self.carrer = carrer
 class Mod_User:
     def __init__(self):
@@ -49,8 +49,9 @@ class Mod_User:
         else:
             for User in self.users:
                 print(" ")
+                print(f"Usuario {cont}")
                 print(f"Usuario {User.username} Carrera: {User.carrer} Código: {User.code}")
-                print(f"")
+                cont = cont + 1
     def AddUser(self, user):
         self.users.append(user)
 allow = False
@@ -103,6 +104,7 @@ while allow == False:
                     ucode= f"U{countU}"
                     user = User(u_name,ucode,carrer)
                     Mod_User.AddUser(user)
+                    cont = cont + 1
         case 4:
             Mod_User.ShowU()
         case 5:
