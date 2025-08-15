@@ -38,6 +38,9 @@ class User:
         self.username = username
         self.password = code
         self.carrer = carrer
+class Mod_User:
+    def __init__(self):
+        self.users = []
 allow = False
 exit = 0
 Mod_Book = Mod_Book()
@@ -48,6 +51,7 @@ while allow == False:
         case 1:
             #acutal = DateTime.now().year
             count = 0
+            cont = 1
             print("Ingreso de libros")
             print(" ")
             num = int(input("Cuantos libros desae ingresar: "))
@@ -55,6 +59,8 @@ while allow == False:
                 print("La cantidad ingresada no es valida")
             else:
                 for i in range(num):
+                    print(" ")
+                    print(f"Ingreso del libro {cont}")
                     title = input("Ingrese el titulo del libro: ")
                     author = input("Ingrese el autor del libro: ")
                     year = int(input("Ingrese el año de publicación del libro:"))
@@ -65,10 +71,24 @@ while allow == False:
                         aviable = True
                         book = Book(title,author,year,code,aviable)
                         Mod_Book.AddBook(book)
+                        cont = cont + 1
+                        count = count + 1
         case 2:
             Mod_Book.Show()
         case 3:
-            pass
+            cont = 1
+            countU = 0
+            num = int(input("cuantos usuarios va a ingresar? "))
+            if num <= 0:
+                print("La cantidad ingresada no es valida")
+            else:
+                for i in range(num):
+                    print(" ")
+                    print(f"Ingreso del usuario {cont}")
+                    u_name = input("Ingrese el nombre del usuario: ")
+                    carrer = input("Ingrese la carrera del usuario: ")
+                    ucode= f"U{countU}"
+                    user = User(u_name,ucode,carrer)
         case 4:
             pass
         case 5:
