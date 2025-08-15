@@ -105,6 +105,7 @@ while allow == False:
                     user = User(u_name,ucode,carrer)
                     Mod_User.AddUser(user)
                     cont = cont + 1
+                    countU = countU + 1
         case 4:
             Mod_User.ShowU()
         case 5:
