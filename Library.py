@@ -54,6 +54,9 @@ class Mod_User:
                 cont = cont + 1
     def AddUser(self, user):
         self.users.append(user)
+class Borrow:
+    def __init__(self,bcode,):
+        self.books = []
 allow = False
 exit = 0
 Mod_Book = Mod_Book()
