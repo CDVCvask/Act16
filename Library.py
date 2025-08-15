@@ -76,8 +76,18 @@ class Mod_Borrow:
         self.borrows = []
     def AddBorrow(self, borrow):
         self.borrows.append(borrow)
-    def DeleteB(self,borrow):
-        self.borrows.remove(borrow)
+    def DeleteB(self):
+        remove = 0
+        if len(self.borrows) < 1:
+            print("No hay prestamos para devolver")
+        else:
+            delete = input("Ingrese el codigo del prestamo a devolver: ")
+            for borrow in self.borrows:
+                if delete == borrow.bcode:
+                    remov = 1
+            if remov == 1:
+                self.borrows.remove(delete)
+                print("Se a devuleto el libro correctamente")
     def ShowBo(self):
         cont = cont + 1
         if len(self.borrows) < 1:
@@ -157,9 +167,9 @@ while allow == False:
                     bor_code = f"bor{count}"
                     borrow = Borrow(bor_code,look_user,look_book)
         case 6:
-            pass
+            Mod_Borrow.DeleteB()
         case 7:
-            pass
+            Mod_Borrow.ShowB()
         case 8:
             while 1 != 0:
                 check = input("Está seguro de que desea salir de la aplicación?(S/N) ")
