@@ -34,6 +34,12 @@ class Mod_Book:
                 cont += 1
     def AddBook(self, book):
         self.books.append(book)
+    def FindB(self,bookl):
+        code = -1
+        for book in self.books:
+            if book.code == bookl:
+                code = book.code
+        return code
 class User:
     def __init__(self, username, code,carrer):
         self.username = username
@@ -54,13 +60,38 @@ class Mod_User:
                 cont = cont + 1
     def AddUser(self, user):
         self.users.append(user)
+    def FindUser(self, codel):
+        code = -1
+        for user in self.users:
+            if user.code == codel:
+                code = user.code
+        return code
 class Borrow:
-    def __init__(self,bcode,):
-        self.books = []
+    def __init__(self,bcode,user,book):
+        self.bcode = bcode
+        self.user = user
+        self.book = book
+class Mod_Borrow:
+    def __init__(self):
+        self.borrows = []
+    def AddBorrow(self, borrow):
+        self.borrows.append(borrow)
+    def DeleteB(self,borrow):
+        self.borrows.remove(borrow)
+    def ShowBo(self):
+        cont = cont + 1
+        if len(self.borrows) < 1:
+            print("No hay prestamos para mostrar")
+        else:
+            for borrow in self.borrows:
+                print(" ")
+                print(f"Prestamo {cont}")
+                print(f"Código de prestamo: {borrow.bcode}, código de libro {borrow.book}, código de usuario {borrw.user}")
 allow = False
 exit = 0
 Mod_Book = Mod_Book()
 Mod_User = Mod_User()
+Mod_Borrow = Mod_Borrow()
 while allow == False:
     Menu()
     opt = int(input("Ingrese la opción que desee: "))
@@ -112,7 +143,19 @@ while allow == False:
         case 4:
             Mod_User.ShowU()
         case 5:
-            pass
+            count = 0
+            look_user = input("Ingrese su código de usuario: ")
+            find = Mod_User.FindUser(look_user)
+            if find == -1:
+                print("No existe el usuario ingresado")
+            else:
+                look_book = input("Ingrese el código del libro que desea prestar: ")
+                findb = Mod_Book.FindUser(look_book)
+                if findb == -1:
+                    print("El libro que buscas no existe")
+                else:
+                    bor_code = f"bor{count}"
+                    borrow = Borrow(bor_code,look_user,look_book)
         case 6:
             pass
         case 7:
